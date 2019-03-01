@@ -148,8 +148,8 @@ module ``03: Putting the Function into Functional Programming`` =
     let ``20 Functions have types`` () =
         let a x y = x + "cabbage" + y
         let b r = 50.0 / r
-        a |> should be ofType<FILL_ME_IN>
-        b |> should be ofType<FILL_ME_IN>
+        a |> should be ofType<string>
+        b |> should be ofType<float>
 
 
     [<Test>]
@@ -168,7 +168,7 @@ module ``03: Putting the Function into Functional Programming`` =
     *)
         let somefunc x y = x + y x
         let square v = v * v
-        somefunc 3 square |> should equal __
+        somefunc 3 square |> should equal 12
         somefunc 3 ((*) 7) |> should equal __
         somefunc 10 ((+) 8) |> should equal __
         somefunc 5 (fun z -> z + 22) |> should equal __
