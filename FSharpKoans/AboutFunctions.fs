@@ -249,7 +249,7 @@ module ``03: Putting the Function into Functional Programming`` =
         let a x =
             x = 4
         not (a 4) |> should equal false
-        (__ __ a 4) |> should equal false // <-- put <| in one of the spaces to fill in
+        (not <| a 4) |> should equal false // <-- put <| in one of the spaces to fill in
 
     (*
         The compose operator takes:
@@ -274,7 +274,7 @@ module ``03: Putting the Function into Functional Programming`` =
         let j = double >> add5
         let k = double >> double >> double
         let l = j >> i
-        i 3 |> should equal __
-        j 3 |> should equal __
-        k 3 |> should equal __
-        l 3 |> should equal __
+        i 3 |> should equal 16
+        j 3 |> should equal 11
+        k 3 |> should equal 24
+        l 3 |> should equal 32
