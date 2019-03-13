@@ -57,10 +57,10 @@ module ``04: Match expressions`` =
             | 19 -> "Smite"
             | y -> "Trite"
             | 213 -> "Light"
-        x |> should equal __
-        y |> should equal __
-        z |> should equal __
-        a |> should equal __
+        x |> should equal 213
+        y |> should equal 19
+        z |> should equal "Bite"
+        a |> should equal "Trite"
 
     [<Test>]
     let ``05 Using a mapping function`` () =
