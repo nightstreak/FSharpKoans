@@ -9,13 +9,13 @@ Lists are immutable, ordered, finite sequences of a single type.
 module ``12: I Have Here In My Hand A List`` = 
     [<Test>]
     let ``01 Creating a list (Syntax 1).`` () = 
-        let myList = [ __; __; __; __ ]
+        let myList = [ "apple"; "grape"; "pear"; "biscuit" ]
         myList |> should equal [ "apple"; "grape"; "pear"; "biscuit" ]
    
     [<Test>]
     let ``02 Creating a list (Syntax 2).`` () =
-        let myList = __::__::__::__::[]
-        let myOtherList = __::__::__::[ __ ]
+        let myList = "apple"::"grape"::"pear"::"biscuit"::[]
+        let myOtherList = "orange"::"lemon"::"princess"::[ "queen" ]
         let myNextList = __::__::__ // you may use [ and ] symbols on this line.
         let myLastList = __::__::__ // DO NOT use [ or ] symbols on this line!
         myList |> should equal [ "apple"; "grape"; "pear"; "biscuit" ]

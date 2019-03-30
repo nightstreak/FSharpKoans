@@ -43,22 +43,22 @@ module ``11: Exploring types, options, and results`` =
 
     [<Test>]
     let ``01 Type annotations for function types`` () =
-        let a (x:FILL_ME_IN) (y:FILL_ME_IN) = x + y
-        let b (x:FILL_ME_IN) (y:FILL_ME_IN) = x + y
+        let a (x:string) (y:string) = x + y
+        let b (x:float) (y:float) = x + y
         a |> should be ofType<string -> string -> string>
         b |> should be ofType<float -> float -> float>
-        a __ __ |> should equal "skipping"
-        b __ __ |> should equal 1.02
+        a "skip" "ping" |> should equal "skipping"
+        b 0.02 1.0 |> should equal 1.02
 
     [<Test>]
     let ``02 We can use a type annotation for a function's output`` () =
-        let k a b : FILL_ME_IN = a * b
-        k __ __ |> should equal 15.0 
+        let k a b : float = a * b
+        k 3.0 5.0 |> should equal 15.0 
 
     [<Test>]
     let ``03 Basic Option example`` () =
-        getSurname "Taylor Swift" |> should equal __
-        getSurname "Eminem" |> should equal __
+        getSurname "Taylor Swift" |> should equal Some 
+        getSurname "Eminem" |> should equal Some
 
     // the System.Int32.TryParse, System.Double.TryParse, etc functions return
     // a tuple of bool * XYZ, where XYZ is the converted value.
