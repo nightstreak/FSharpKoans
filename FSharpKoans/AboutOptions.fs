@@ -58,8 +58,8 @@ module ``11: Exploring types, options, and results`` =
 
     [<Test>]
     let ``03 Basic Option example`` () =
-        getSurname "Taylor Swift" |> should equal Some 
-        getSurname "Eminem" |> should equal Some
+        getSurname "Taylor Swift" |> should equal (Some "Swift") 
+        getSurname "Eminem" |> should equal (None)
 
     // the System.Int32.TryParse, System.Double.TryParse, etc functions return
     // a tuple of bool * XYZ, where XYZ is the converted value.
@@ -67,7 +67,8 @@ module ``11: Exploring types, options, and results`` =
     let ``04 Parsing a string safely`` () =
         let parse (s:string) =
             match System.Int32.TryParse s with
-            | _ -> __ // <-- fill in the match cases
+            | true, v -> Some v // <-- fill in the match cases
+            |_-> None
         parse "25" |> should equal (Some 25)
         parse "48" |> should equal (Some 48)
         parse "wut" |> should equal None
@@ -76,7 +77,8 @@ module ``11: Exploring types, options, and results`` =
     let ``05 Remapping Option values`` () =
       let f n =
          match getSurname n with
-         | _ -> __ // <-- write a bunch of good match cases
+         | Some n -> n // <-- write a bunch of good match cases
+         | None -> "[no surname]"
       f "Anubis" |> should equal "[no surname]"
       f "Niccolo Machiavelli" |> should equal "Machiavelli"
       f "Mara Jade" |> should equal "Jade"
@@ -90,10 +92,10 @@ module ``11: Exploring types, options, and results`` =
         let f n m =
             match n<0.0, m=0.0 with
             | true, _ -> Error NegativeNumberSupplied
-            | _, true -> __
+            | _, true -> Error DivisionByZero
             | _ ->
                 // 'sqrt' is the square-root function
                 __ (sqrt n / m)
-        f -6.0 2.5 |> shouldEqual __
+        f -6.0 2.5 |> shouldEqual (Error NegativeNumberSupplied)
         f 144.0 2.0 |> shouldEqual (Ok 6.0)
         f 7.3 0.0 |> shouldEqual (Error DivisionByZero)
